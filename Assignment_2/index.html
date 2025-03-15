@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Finance Tracker Pro</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1b242d;
+            color: white;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 40px;
+            background-color: #1b242d;
+        }
+
+        .logo {
+            font-size: 18px;
+        }
+
+        .logo img {
+            height: 16px;
+            max-width: 100%;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 15px;
+            padding: 10px;
+            max-width: 700px;
+            border-radius: 5px;
+            border: none;
+            background: #2c3a47;
+            color: white;
+            border: solid 1px;
+        }
+
+        .search-bar::placeholder {
+            color: #9da5b1;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .dropdown {
+            cursor: pointer;
+            margin-right: 20px;
+
+        }
+
+        .join-btn {
+            background-color: #00b4aa;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+
+        }
+
+        .hero-content {
+            max-width: fit-content;
+            text-align: left;
+
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: #b0b8c3;
+            margin-bottom: 25px;
+        }
+
+        .buttons button {
+            padding: 12px 24px;
+            border-radius: 5px;
+
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 15px;
+        }
+
+        .primary-btn {
+            background-color: #00b4aa;
+            color: white;
+            border: none;
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            display: block;
+        }
+
+
+        .features {
+            text-align: center;
+            padding: 80px 50px;
+        }
+
+        .features h2 {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .features p {
+            font-size: 18px;
+            color: #b0b8c3;
+            margin-bottom: 40px;
+        }
+
+        .features-container {
+            display: table;
+            width: 100%;
+            text-align: center;
+            margin: auto;
+        }
+
+        .feature-row {
+            display: table-row;
+        }
+
+        .feature {
+            display: table-cell;
+            padding: 20px;
+            vertical-align: top;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #00adb5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: white;
+            margin: 0 auto 15px;
+        }
+
+        .feature h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            font-size: 16px;
+            color: #b0b8c3;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        p.subtitle {
+            font-size: 18px;
+            color: #b0b8c3;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .step {
+            background: #242933;
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            text-align: center;
+        }
+
+        .step img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .step-number {
+            color: #00adb5;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .step-description {
+            font-size: 16px;
+            color: #b0b8c3;
+        }
+
+        .container-of {
+            max-width: 1000px;
+            margin: auto;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        p.subtitle {
+            font-size: 18px;
+            color: #b0b8c3;
+            margin-bottom: 40px;
+        }
+
+        .toggle {
+            display: flex;
+            justify-content: center;
+            background-color: #2e333d;
+            border-radius: 25px;
+            padding: 5px;
+            width: fit-content;
+            margin: 0 auto 30px auto;
+        }
+
+        .toggle button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            background-color: transparent;
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .toggle button.active {
+            background-color: white;
+            color: black;
+            border-radius: 20px;
+        }
+
+        .plans {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .plan {
+            background: #242933;
+            padding: 20px;
+            border-radius: 10px;
+            width: 40%;
+            text-align: center;
+        }
+
+        .plan.featured {
+            border: 2px solid #00adb5;
+        }
+
+        .plan h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .plan p.price {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .plan ul {
+            list-style: none;
+            padding: 0;
+            color: #b0b8c3;
+        }
+
+        .plan ul li {
+            margin: 10px 0;
+        }
+
+        .plan button {
+            margin-top: 20px;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #00adb5;
+            color: white;
+            font-size: 16px;
+        }
+
+        .con-of {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .text-section {
+            text-align: left;
+            max-width: 100%;
+        }
+
+        .text-section h1 {
+            font-size: 60px;
+
+        }
+
+        .text-section p {
+            font-size: 18px;
+            color: #b0b8c3;
+            margin-bottom: 20px;
+        }
+
+        .btn-of {
+            display: inline-block;
+            padding: 15px 170px;
+            background-color: #00adb5;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .info-card {
+            background: #242933;
+            padding: 50px;
+            border-radius: 10px;
+            width: 80%;
+            height: 350px;
+            text-align: left;
+
+        }
+
+        .info-item {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-card img {
+            width: 34px;
+            height: 34px;
+            margin-right: 10px;
+        }
+
+        .info-item h3 {
+            font-size: 20px;
+            margin: 0;
+            font-weight: normal;
+        }
+
+        .info-item p {
+            font-size: 17px;
+            color: #b0b8c3;
+            margin: 5px 0 0 0;
+        }
+
+        .brands {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            padding: 50px;
+            background: #1b242d;
+        }
+
+        .brands img {
+            width: 140px;
+            opacity: 1;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .footer {
+            background-color: #1b242d;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .footer .links {
+            margin: 10px 0;
+        }
+
+        .footer .links a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+        }
+
+        .footer .links a:hover {
+            color: #fff;
+        }
+
+        .footer .divider {
+            width: 90%;
+            margin: 10px auto;
+            border: 0.5px solid #555;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            margin: 0 auto;
+            font-size: 12px;
+            color: #bbb;
+        }
+
+        .footer-bottom .policy-links a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .footer-bottom .policy-links a:hover {
+            color: #fff;
+        }
+        .container-dd {
+            display: flex;
+            margin-left: 80px;
+            width: 100%;
+            gap: 150px;
+        }
+
+        .contact-form {
+            background-color: white;
+            padding: 40px;
+            margin: 40px;
+            border-radius: 15px;
+            width: 550px;
+            
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .contact-form label {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            background-color: #1c232e;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .contact-form textarea {
+            height: 100px;
+        }
+
+        .contact-form button {
+            background-color: #009ca8;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .contact-form button:hover {
+            background-color: #007b8a;
+        }
+
+        .contact-info {
+            width: 350px;
+        }
+
+        .contact-info h1 {
+            font-size: 2.2em;
+            font-weight: bold;
+        }
+
+        .contact-info p {
+            margin-top: 5px;
+            font-size: 1em;
+            color: #ccc;
+        }
+
+        .info-item-dd {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .info-item-dd img {
+            width: 30px;
+            height: 30px;
+        }
+
+        h3 {
+            font-size: 1.2em;
+        }
+
+        p {
+            font-size: 0.9em;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <span class="logo"><img src="p-2.png"> Finance Tracker Pro</span>
+            <input type="text" placeholder="Find Your Way" class="search-bar">
+            <nav>
+                <span class="dropdown">Budgeting Tools &#x25BC; </span>
+                <button class="join-btn">Join Now</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-image">
+            <img src="p-1.png" alt="Laptop with finance tracker interface">
+        </div>
+        <div class="hero-content">
+            <h1>Master Your <br> Money Today</h1>
+            <p>Your ultimate tool for budgeting and expense tracking.</p>
+            <div class="buttons">
+                <button class="primary-btn">Get Started Now</button>
+                <button class="secondary-btn">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="features">
+        <h2>User-Friendly Interface</h2>
+        <p>Easily navigate through your finances with a clean and intuitive design.</p>
+        <div class="features-container">
+            <div class="feature-row">
+                <div class="feature">
+                    <div class="feature-icon"><img src="i-1.png" alt="Expense Tracking"></div>
+                    <h3>Expense Tracking</h3>
+                    <p>Keep track of your daily expenses effortlessly and stay within your budget.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><img src="i-2.png" alt="Budget Planning"></div>
+                    <h3>Budget Planning</h3>
+                    <p>Set monthly budgets and receive alerts when you're nearing your limits.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><img src="i-3.png" alt="Financial Insights"></div>
+                    <h3>Financial Insights</h3>
+                    <p>Gain insights into your spending habits and make informed financial decisions.</p>
+                </div>
+            </div>
+            <div class="feature-row">
+                <div class="feature">
+                    <div class="feature-icon"><img src="i-4.png" alt="Goal Setting"></div>
+                    <h3>Goal Setting</h3>
+                    <p>Set financial goals and track your progress towards achieving them.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><img src="i-5.png" alt="Secure Data"></div>
+                    <h3>Secure Data</h3>
+                    <p>Your financial data is protected with top-notch security measures.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><img src="i-6.png" alt="Custom Reports"></div>
+                    <h3>Custom Reports</h3>
+                    <p>Generate detailed reports to analyze your financial health over time.</p>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    <div class="container">
+        <h2>How It Works</h2>
+        <p class="subtitle">A simple guide to managing your finances effectively.</p>
+        <div class="steps">
+            <div class="step">
+                <img src="P-3.png" alt="Step 1">
+                <p class="step-number">Step 1</p>
+                <p class="step-title">Sign Up</p>
+                <p class="step-description">Create your account in just a few minutes to get started.</p>
+            </div>
+            <div class="step">
+                <img src="P-4.png" alt="Step 2">
+                <p class="step-number">Step 2</p>
+                <p class="step-title">Set Your Budget</p>
+                <p class="step-description">Define your financial goals and set budgets accordingly.</p>
+            </div>
+            <div class="step">
+                <img src="P-5.png" alt="Step 3">
+                <p class="step-number">Step 3</p>
+                <p class="step-title">Track Your Spending</p>
+                <p class="step-description">Monitor your expenses daily to stay on track.</p>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="container-of">
+        <h2>Pricing Plans</h2>
+        <p class="subtitle">Choose a plan that fits your financial needs and start tracking today.</p>
+        <div class="toggle">
+            <button class="active">Annual Subscription</button>
+            <button>Monthly Subscription</button>
+        </div>
+        <div class="plans">
+            <div class="plan">
+                <h3>Basic Plan</h3>
+                <p>Start managing your finances today.</p>
+                <p class="price">FREE TRIAL</p>
+                <ul>
+                    <li>✔ 5 GB Cloud Storage</li>
+                    <li>✔ Email Support</li>
+                    <li>✔ Access to Community</li>
+                </ul>
+                <button>Select Your Plan</button>
+            </div>
+            <div class="plan featured">
+                <h3>Premium Plan</h3>
+                <p>Unlimited features for your financial journey.</p>
+                <p class="price">$9.99 /month</p>
+                <ul>
+                    <li>✔ Unlimited Reports</li>
+                    <li>✔ Unlimited Storage</li>
+                    <li>✔ 24/7 Customer Support</li>
+                </ul>
+                <button>Select Your Plan</button>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+
+
+    <div class="con-of">
+        <div class="text-section">
+            <h1>Take Control of Your Finances</h1>
+            <p>Join thousands of users who are mastering their money.</p>
+            <a href="#" class="btn-of">Get Started</a>
+        </div>
+        <div class="info-card">
+            <img src="i-j-1.png" alt="Track Your Expenses">
+            <div class="info-item">
+
+                <div>
+                    <h3>Track Your Expenses</h3>
+                    <p>Easily log your daily expenses to stay informed.</p>
+                </div>
+            </div>
+            <img src="i-j-2.png" alt="Set Financial Goals">
+            <div class="info-item">
+
+                <div>
+                    <h3>Set Financial Goals</h3>
+                    <p>Define and track your financial objectives effortlessly.</p>
+                </div>
+            </div>
+            <img src="i-j-3.png" alt="Analyze Your Spending">
+            <div class="info-item">
+
+                <div>
+                    <h3>Analyze Your Spending</h3>
+                    <p>Get insights into your spending patterns for better budgeting.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="container-dd">
+        <div class="contact-form">
+            <form>
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your name">
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email">
+
+                <label for="message">Your Message</label>
+                <textarea id="message" placeholder="Type your message here"></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+        <div class="contact-info">
+            <h1>Contact Us</h1>
+            <p>We're here to help!</p>
+
+            <div class="info-item-dd">
+                <img src="p-i-1.png" alt="Email Icon">
+                <div>
+                    <h3>Email Us</h3>
+                    <p>support@financetracker.com</p>
+                </div>
+            </div>
+
+            <div class="info-item-dd">
+                <img src="p-i-2.png" alt="Phone Icon">
+                <div>
+                    <h3>Phone Number</h3>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+            </div>
+
+            <div class="info-item-dd">
+                <img src="p-i-3.png " alt="Location Icon">
+                <div>
+                    <h3>Office Location</h3>
+                    <p>123 Finance St, Money City, USA</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <section class="brands">
+        <img src="b-1.png" alt="H&M">
+        <img src="b-2.png" alt="Lacoste">
+        <img src="b-3.png" alt="Adidas">
+        <img src="b-4.png" alt="Louis Vuitton">
+        <img src="b-5.png" alt="Levi's">
+    </section>
+    <br><br><br>
+    <footer class="footer">
+        <h3>Finance Guru</h3>
+        <div class="links">
+            <a href="#">About Us</a>
+            <a href="#">Our Services</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <hr class="divider">
+        <div class="footer-bottom">
+            <p>&copy; 2024 Finance Tracker. All rights reserved.</p>
+            <div class="policy-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Preferences</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
